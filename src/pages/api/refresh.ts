@@ -69,7 +69,7 @@ const api: NextApiHandler = async (_req, res) => {
           if (roleId == AdminRoleID) continue;
           await new Promise(resolve => setTimeout(resolve, 100));
           console.log('Adding role for user', CrownRoleID, user.discordId);
-          await addRoleForUser(roleId, user.discordId);
+          await addRoleForUser(CrownRoleID, user.discordId);
         }
       }
     }
