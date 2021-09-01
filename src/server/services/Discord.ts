@@ -112,7 +112,7 @@ export const setRolesForUser = async (roles: string[], userID: string) => {
   ).then(res => res.json());
 };
 export const addRoleForUser = async (roleId: string, userID: string) => {
-  await fetch(
+  const resp = await fetch(
     `https://discord.com/api/v8/guilds/${process.env.DISCORD_SERVER_ID}/members/${userID}/roles/${roleId}`,
     {
       method: 'PUT',
@@ -121,7 +121,8 @@ export const addRoleForUser = async (roleId: string, userID: string) => {
         'Content-Type': 'application/json'
       }
     }
-  ).then(res => res.text());
+  );
+  console.log(resp)
 };
 export const removeRoleForUser = async (roleId: string, userID: string) => {
   await fetch(
@@ -136,6 +137,8 @@ export const removeRoleForUser = async (roleId: string, userID: string) => {
   ).then(res => res.text());
 };
 
+export const demonRoleID = 882662681780301884;
+export const dragonRoleId = 882662718178488402
 export const RolesToIDs: Record<string, string> = {
   'Divine Robe': '881425623833276506',
   'Divine Robe of Power': '881425733443014667',
@@ -156,4 +159,5 @@ export const RolesToIDs: Record<string, string> = {
   'Divine Robe of Giants': '881427638386827274'
 };
 
-export const AdminRoleID = '882328365355388988';
+export const CrownRoleID = '882662650201387008'; //882662650201387008
+export const AdminRoleID = '882328427418488862';

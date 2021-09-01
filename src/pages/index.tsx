@@ -42,8 +42,8 @@ const IndexPage = () => {
       )}
 
       <div className="links">
-        <a href="https://robes.market/" target="_blank">
-          Find Divine Robes for sale and check prices at robes.market.
+        <a href="https://crowns-market.vercel.app/" target="_blank">
+          Find Crowns for sale and check prices at https://crowns-market.vercel.app/.
         </a>
       </div>
       <style jsx>{`

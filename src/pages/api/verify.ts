@@ -28,9 +28,6 @@ const api = async (req: NextApiRequest, res: NextApiResponse) => {
           data: { address: account.toLowerCase() }
         });
       }
-
-      //check if user in server
-      //await getRolesForUser (user.id)
       
       return res.redirect(getLoginURL(user.id));
     } else return res.redirect('/unauthorized');

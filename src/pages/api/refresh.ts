@@ -2,6 +2,7 @@ import prisma from '@server/helpers/prisma';
 import {
   addRoleForUser,
   AdminRoleID,
+  CrownRoleID,
   getRolesForUser,
   removeFromServer,
   removeRoleForUser,
@@ -26,7 +27,7 @@ const api: NextApiHandler = async (_req, res) => {
     console.log(
       `${user.username} ${user.address} has ${
         filteredBags.length
-      } head: (${filteredBags.map(bag => bag.head).join(', ')})`
+      } Crown: (${filteredBags.map(bag => bag.head).join(', ')})`
     );
     if (filteredBags.length == 0 && user.inServer) {
       await prisma.user.update({
@@ -67,7 +68,7 @@ const api: NextApiHandler = async (_req, res) => {
         for (const roleId of toAdd) {
           if (roleId == AdminRoleID) continue;
           await new Promise(resolve => setTimeout(resolve, 100));
-          console.log('Adding role for user', roleId, user.discordId);
+          console.log('Adding role for user', CrownRoleID, user.discordId);
           await addRoleForUser(roleId, user.discordId);
         }
       }
