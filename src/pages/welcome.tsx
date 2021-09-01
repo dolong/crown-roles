@@ -5,11 +5,12 @@ const IndexPage = () => {
   return (
     <div className="index">
       <Head>
-        <title>Divine Roles</title>
+        <title>Crown Roles</title>
       </Head>
-      <h1>Divine Roles</h1>
+      <h1>Crown Roles</h1>
       <div className="message">
         Welcome. You have been added to the Discord.
+        <a href="https://crown-roles-test.vercel.app/api/refresh">Refresh your role</a>
       </div>
       <style jsx>{`
         .index {
