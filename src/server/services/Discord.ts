@@ -156,4 +156,4 @@ export const RolesToIDs: Record<string, string> = {
   'Divine Robe of Giants': '881427638386827274'
 };
 
-export const AdminRoleID = '881277625820127232';
+export const AdminRoleID = '882328365355388988';

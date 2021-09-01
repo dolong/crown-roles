@@ -21,12 +21,12 @@ const api: NextApiHandler = async (_req, res) => {
   for (const user of usersToRefresh) {
     const bags = await getBagsInWallet(user.address.toLowerCase());
     const filteredBags = bags.filter(bag =>
-      bag.chest.toLowerCase().includes('divine robe')
+      bag.head.toLowerCase().includes('crown')
     );
     console.log(
       `${user.username} ${user.address} has ${
         filteredBags.length
-      } robes: (${filteredBags.map(bag => bag.chest).join(', ')})`
+      } head: (${filteredBags.map(bag => bag.head).join(', ')})`
     );
     if (filteredBags.length == 0 && user.inServer) {
       await prisma.user.update({
@@ -45,12 +45,12 @@ const api: NextApiHandler = async (_req, res) => {
         data: {
           lastChecked: new Date(),
           inServer: true,
-          robes: filteredBags.map(bag => bag.chest)
+          robes: filteredBags.map(bag => bag.head)
         }
       });
       if (user.discordId && user.inServer) {
         const newRoleIds = filteredBags
-          .map(bag => bag.chest)
+          .map(bag => bag.head)
           .map(name => RolesToIDs[name]);
         const { roles: existingRoleIds }: { roles: string[] } =
           await getRolesForUser(user.discordId);

@@ -15,10 +15,10 @@ const IndexPage = () => {
   return (
     <div className="index">
       <Head>
-        <title>Divine Roles</title>
+        <title>Crown Roles</title>
       </Head>
-      <h1>Divine Roles</h1>
-      <div className="message">You must have Divine Robes to enter.</div>
+      <h1>Crown Roles</h1>
+      <div className="message">You must have Crowns to enter.</div>
       {!account ? (
         <button
           onClick={() =>
@@ -38,7 +38,7 @@ const IndexPage = () => {
           Connect Wallet
         </button>
       ) : (
-        <button onClick={verifyAndJoin}>Verify your Divine Role</button>
+        <button onClick={verifyAndJoin}>Verify your Crown Role</button>
       )}
 
       <div className="links">
