@@ -10,6 +10,7 @@ const IndexPage = () => {
       <h1>Crown Roles</h1>
       <div className="message">
         Welcome. You have been added to the Discord.
+        <br></br>
         <a href="https://crown-roles-test.vercel.app/api/refresh">Refresh your role</a>
       </div>
       <style jsx>{`
