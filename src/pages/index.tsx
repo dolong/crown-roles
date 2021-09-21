@@ -2,6 +2,7 @@ import React from 'react';
 import { useWallet } from '@gimmixorg/use-wallet';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import useSignature from '@app/features/useSignature';
+import 'tailwindcss/tailwind.css'
 import Head from 'next/head';
 import Router from 'next/router';
 
@@ -13,87 +14,131 @@ const IndexPage = () => {
     Router.push(`/api/verify?account=${account}&signature=${signature}`);
   };
   return (
-    <div className="index">
-      <Head>
-        <title>Crown Roles</title>
-      </Head>
-      <h1>Crown Roles</h1>
-      <div className="message">You must have Crowns to enter.</div>
-      {!account ? (
-        <button
-          onClick={() =>
-            connect({
-              providerOptions: {
-                walletconnect: {
-                  package: WalletConnectProvider,
-                  options: {
-                    infuraId: 'b95f6330bfdd4f5d8960db9d1d3da676'
-                  }
+    <section className="font-sans bg-bgcolor text-binanceText body-font grid place-items-center h-screen">
+      <div className="container flex px-24 py-24 md:flex-row flex-col items-center">
+        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+          <img className="object-cover object-center rounded" alt="hero" src="https://dex-bin.bnbstatic.com/static/images/home/wallet/BSC-dark.svg" />
+        </div>
+        <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-binanceTextPrimary">
+            Connect Your Wallet with BSC Discord!
+          </h1>
+          <p className="mb-8 leading-relaxed text-binanceTextPrimary">
+            Connecting your wallet will enable you to participate in locked communities, earn perks and much more!
+          </p>
+          <div className="flex justify-center">
+            {/* <button className="inline-flex text-binanceTextSecondary bg-binanceButtonPrimary border-0 py-2 px-6 focus:outline-none rounded text-lg">
+              Connect Wallet
+            </button> */}
+                  {!account ? (
+              <button className="inline-flex text-binanceTextSecondary bg-binanceButtonPrimary border-0 py-2 px-6 focus:outline-none rounded text-lg"
+                onClick={() =>
+                  connect({
+                    providerOptions: {
+                      walletconnect: {
+                        package: WalletConnectProvider,
+                        options: {
+                          infuraId: 'b95f6330bfdd4f5d8960db9d1d3da676'
+                        }
+                      }
+                    },
+                    theme: 'dark'
+                  })
                 }
-              },
-              theme: 'dark'
-            })
-          }
-        >
-          Connect Wallet
-        </button>
-      ) : (
-        <button onClick={verifyAndJoin}>Verify your Crown Role</button>
-      )}
-
-      <div className="links">
-        <a href="https://crowns-market.vercel.app/" target="_blank">
-          Find Crowns for sale and check prices at https://crowns-market.vercel.app/.
-        </a>
+              >
+                <b>Connect Wallet</b>
+              </button>
+            ) : (
+              <button><b>Success!</b></button>
+            )}
+            <button className="ml-4 inline-flex bg-binanceButtonSecondary text-binanceTextPrimary border-0 py-2 px-6 focus:outline-none rounded text-lg">
+            <a href="/api/discord/login"><b>Connect Discord</b></a>
+            </button>
+          </div>
+        </div>
       </div>
-      <style jsx>{`
-        .index {
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-        }
-        .message {
-          margin-top: 20px;
-          opacity: 0.5;
-        }
+    </section>
+    // <div className="index">
+    //   <Head>
+    //     <title>Crown Roles</title>
+    //   </Head>
+    //   <h1>Crown Roles</h1>
+    //   <div className="message">You must have Crowns to enter.</div>
+    //   {!account ? (
+    //     <button
+    //       onClick={() =>
+    //         connect({
+    //           providerOptions: {
+    //             walletconnect: {
+    //               package: WalletConnectProvider,
+    //               options: {
+    //                 infuraId: 'b95f6330bfdd4f5d8960db9d1d3da676'
+    //               }
+    //             }
+    //           },
+    //           theme: 'dark'
+    //         })
+    //       }
+    //     >
+    //       Connect Wallet
+    //     </button>
+    //   ) : (
+    //     <button onClick={verifyAndJoin}>Verify your Crown Role</button>
+    //   )}
 
-        h1 {
-          font-size: 32px;
-          margin: 0;
-          padding: 0;
-          font-weight: normal;
-        }
-        button {
-          margin-top: 20px;
-          background-color: transparent;
-          border: none;
-          outline: none;
-          color: white;
-          font-family: serif;
-          padding: 0;
-          font-size: 18px;
-          cursor: pointer;
-          background-color: hsl(203, 18%, 19%);
-          text-decoration: none;
-          padding: 10px 20px;
-          border-radius: 5px;
-        }
-        .links {
-          position: fixed;
-          bottom: 0;
-          padding: 20px 75px;
-          text-align: center;
-          line-height: 1.3em;
-        }
-      `}</style>
-    </div>
+    //   <div className="links">
+    //     <a href="https://crowns-market.vercel.app/" target="_blank">
+    //       Find Crowns for sale and check prices at https://crowns-market.vercel.app/.
+    //     </a>
+    //   </div>
+    //   <style jsx>{`
+    //     .index {
+    //       padding: 20px;
+    //       display: flex;
+    //       flex-direction: column;
+    //       justify-content: center;
+    //       align-items: center;
+    //       position: absolute;
+    //       top: 0;
+    //       left: 0;
+    //       right: 0;
+    //       bottom: 0;
+    //     }
+    //     .message {
+    //       margin-top: 20px;
+    //       opacity: 0.5;
+    //     }
+
+    //     h1 {
+    //       font-size: 32px;
+    //       margin: 0;
+    //       padding: 0;
+    //       font-weight: normal;
+    //     }
+    //     button {
+    //       margin-top: 20px;
+    //       background-color: transparent;
+    //       border: none;
+    //       outline: none;
+    //       color: white;
+    //       font-family: serif;
+    //       padding: 0;
+    //       font-size: 18px;
+    //       cursor: pointer;
+    //       background-color: hsl(203, 18%, 19%);
+    //       text-decoration: none;
+    //       padding: 10px 20px;
+    //       border-radius: 5px;
+    //     }
+    //     .links {
+    //       position: fixed;
+    //       bottom: 0;
+    //       padding: 20px 75px;
+    //       text-align: center;
+    //       line-height: 1.3em;
+    //     }
+    //   `}</style>
+    // </div>
   );
 };
 
